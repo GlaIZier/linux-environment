@@ -1,0 +1,72 @@
+---
+- hosts: localhost
+
+  vars_files:
+    - default.config.yml
+
+  pre_tasks:
+    - debug: msg="ansible_facts.pkg_mgr = {{ ansible_facts.pkg_mgr }}"
+
+# todo remove it
+#    - name: "Set ansible_pkg_mgr to homebrew when it's unknown"
+#      set_fact:
+#        ansible_facts:
+#          pkg_mgr: homebrew
+#      when: ansible_facts['pkg_mgr'] == 'unknown'
+
+    - debug: msg="ansible_facts.pkg_mgr = {{ ansible_facts.pkg_mgr }}"
+
+    # update the default.config.yml variables with ones from config.yml if it exists
+    - include_vars: "{{ item }}"
+      with_fileglob:
+        - "{{ playbook_dir }}/config.yml"
+      tags: ['always']
+
+    - include_tasks: tasks/dotfiles.yml
+      when: configure_dotfiles
+      tags: ['dotfiles']
+
+  roles:
+    # https://github.com/Comcast/ansible-sdkman
+    - role: comcast.sdkman
+      when: configure_sdkman
+      tags: ['sdkman']
+    # https://github.com/viasite-ansible/ansible-role-zsh
+    - role: viasite-ansible.zsh
+      when: configure_zsh
+      tags: ['zsh']
+
+
+
+  tasks:
+
+    - include_tasks: tasks/ansible-check.yml
+
+    - include_tasks: tasks/ssh.yml
+      when: configure_ssh
+      tags: ['ssh']
+
+    - include_tasks: tasks/zsh.yml
+      when: (configure_zsh and configure_dotfiles)
+      tags: ['zsh', 'dotfiles']
+
+    - include_tasks: tasks/extra-packages.yml
+      when: configure_extra_packages
+      tags: ['extra-packages']
+
+    - include_tasks: tasks/folders.yml
+      when: configure_folders
+      tags: ['folders']
+
+    - name: Run configured post-provision ansible task files.
+      include_tasks: "{{ outer_item }}"
+      loop_control:
+        loop_var: outer_item
+      with_fileglob: "{{ post_provision_tasks|default(omit) }}"
+
+    - debug: msg="the value of ~/.bashrc is {{lookup('file', '~/.bashrc') }}"
+    - debug: msg="the value of ~/.bash_profile is {{lookup('file', '~/.bash_profile') }}"
+    - debug: msg="the value of ~/.profile is {{lookup('file', '~/.profile') }}"
+    - debug: msg="the value of ~/.zshrc is {{lookup('file', '~/.zshrc') }}"
+    - debug: msg="the value of ~/.zprofile is {{lookup('file', '~/.zprofile') }}"
+    - debug: msg="the value of ~/.zshrc.local is {{lookup('file', '~/.zshrc.local') }}"

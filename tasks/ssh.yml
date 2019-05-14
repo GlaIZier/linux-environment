@@ -1,0 +1,16 @@
+---
+- name: Ensures ~/.ssh/ directory exists
+  file:
+    path: "~/.ssh"
+    state: directory
+
+- name: Ensure that ssh rsa key is in the ~/.ssh/
+  command : "ssh-keygen -q -t rsa -b 4096 -f ~/.ssh/{{ ssh_key_name }} -C 'GlaIZier' -N ''"
+  args:
+    creates: "~/.ssh/{{ ssh_key_name }}"
+
+- name: Ensure the ssh config is copied
+  copy:
+    src: "{{ dotfiles_repo_local_destination }}/macos/ssh/config"
+    dest: ~/.ssh/config
+  when: configure_dotfiles

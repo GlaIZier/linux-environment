@@ -1,0 +1,98 @@
+---
+
+downloads: "~/.tmp/ansible-downloads/"
+
+configure_homebrew: no
+configure_dotfiles: yes
+configure_sdkman: yes
+configure_zsh: yes
+configure_ssh: yes
+configure_mas: no
+configure_extra_packages: no
+configure_folders: yes
+
+dotfiles_repo: "https://github.com/GlaIZier/configs"
+dotfiles_repo_version: master
+dotfiles_repo_local_destination: "~/github/configs-macos-environment"
+dotfiles_repo_accept_hostkey: false
+dotfiles_files:
+  - macos/.bash_profile
+  - macos/.bashrc
+  - macos/.profile
+  - macos/.zprofile
+  - macos/.zshrc
+  - general/.gitignore
+  - general/.gitconfig
+dotfiles_home: "~"
+
+
+#see the homebrew role https://github.com/geerlingguy/ansible-role-homebrew
+homebrew_installed_packages:
+
+
+
+
+
+
+
+
+homebrew_cask_appdir: /Applications
+homebrew_cask_apps:
+  - google-chrome
+  - google-backup-and-sync
+  - sublime-text
+  - skype
+  - iterm2
+  - intellij-idea
+  - keepassxc
+  - keka
+  - spectacle # windows management
+  - yujitach-menumeters # system info in status menu
+  - clipy # clipboard manager
+  - itsycal # calendar in status menu
+  - punto-switcher
+
+# See the role https://github.com/geerlingguy/ansible-role-mas
+mas_installed_apps: []
+mas_email: ""
+mas_password: ""
+
+# see the sdkman role https://github.com/Comcast/ansible-sdkman
+sdkman_install_packages:
+  - { candidate: java, version: '' }
+  #        - { candidate: java, version: '11.0.2-open' }
+  #        - { candidate: java, version: '8.0.201-oracle' }
+  - { candidate: gradle, version: '' }
+  - { candidate: maven, version: '' }
+
+# Install packages from other package managers.
+# Note: You are responsible for making sure the required package managers are
+# installed, eg. through homebrew.
+composer_packages: []
+  # - name: drush
+  #   state: present # present/absent, default: present
+#   version: "^8.1" # default: N/A
+gem_packages: []
+  # - name: bundler
+  #   state: present # present/absent/latest, default: present
+#   version: "~> 1.15.1" # default: N/A
+npm_packages: []
+  # - name: webpack
+  #   state: present # present/absent/latest, default: present
+#   version: "^2.6" # default: N/A
+pip_packages: []
+  # - name: mkdocs
+  #   state: present # present/absent/latest, default: present
+#   version: "0.16.3" # default: N/A
+
+zsh_autosuggestions_bind_key: "^U"
+
+ssh_key_name: github_rsa
+
+folders:
+  - ~/app
+  - ~/github
+  - ~/tmp
+
+# Glob pattern to ansible task files to run after all other tasks are finished.
+post_provision_tasks: []

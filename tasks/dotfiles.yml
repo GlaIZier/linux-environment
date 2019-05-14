@@ -1,0 +1,43 @@
+---
+# Inspired by https://github.com/geerlingguy/ansible-role-dotfiles/blob/master/tasks/main.yml
+# Todo add a comment why a role cannot be used
+- name: Ensure dotfiles repository is cloned locally.
+  git:
+    repo: "{{ dotfiles_repo }}"
+    dest: "{{ dotfiles_repo_local_destination }}"
+    version: "{{ dotfiles_repo_version }}"
+    accept_hostkey: "{{ dotfiles_repo_accept_hostkey }}"
+    force: yes
+  become: false
+
+- name: Ensure all configured dotfiles are links.
+  command: "ls -F {{ dotfiles_home }}/{{ item | basename }}"
+  register: existing_dotfile_info
+  failed_when: false
+  check_mode: false
+  changed_when: false
+  with_items: "{{ dotfiles_files }}"
+
+- name: Remove existing dotfiles file if a replacement is being linked.
+  file:
+    path: "{{ dotfiles_home }}/{{ dotfiles_files[item.0] | basename }}"
+    state: absent
+  when: "'@' not in item.1.stdout"
+  with_indexed_items: "{{ existing_dotfile_info.results }}"
+
+- name: Link dotfiles into home folder.
+  file:
+    src: "{{ dotfiles_repo_local_destination }}/{{ item }}"
+    dest: "{{ dotfiles_home }}/{{ item | basename }}"
+    state: link
+  become: false
+  with_items: "{{ dotfiles_files }}"
+
+#- name: Ensure that configs are in the home directory
+#  file:
+#    src: "{{ item }}"
+#    dest: "~/{{ item | basename}}"
+#    force: yes
+#    state: link
+#  with_fileglob:
+#    - files/configs/.*

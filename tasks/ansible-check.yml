@@ -1,0 +1,17 @@
+---
+- name: Check downloads directory exists.
+  file:
+    path: "{{ downloads }}"
+    state: directory
+
+- name: Check /etc/ansible directory exists.
+  file:
+    path: /etc/ansible
+    state: directory
+  become: yes
+
+- name: Symlink /usr/local/etc/ansible to /etc/ansible.
+  file:
+    src: /etc/ansible
+    path: /usr/local/etc/ansible
+    state: link

@@ -1,0 +1,5 @@
+# test config to diminish the time of tests by reducing the number of applications to install
+homebrew_cask_apps:
+#  - google-chrome
+#  - sublime-text
+  - iterm2

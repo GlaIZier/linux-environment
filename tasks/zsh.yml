@@ -1,0 +1,7 @@
+---
+- name: Link .zshrc from dotfiles repo as .zshrc.local into a home folder for viasite-ansible.zsh role.
+  file:
+    src: "{{ dotfiles_repo_local_destination }}/macos/.zshrc"
+    dest: "{{ dotfiles_home }}/.zshrc.local"
+    force: yes
+    state: link
