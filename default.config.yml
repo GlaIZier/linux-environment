@@ -13,14 +13,14 @@ configure_folders: yes
 
 dotfiles_repo: "https://github.com/GlaIZier/configs"
 dotfiles_repo_version: master
-dotfiles_repo_local_destination: "~/github/configs-macos-environment"
+dotfiles_repo_local_destination: "~/github/configs-linux-environment"
 dotfiles_repo_accept_hostkey: false
 dotfiles_files:
-  - macos/.bash_profile
-  - macos/.bashrc
-  - macos/.profile
-  - macos/.zprofile
-  - macos/.zshrc
+  - linux/.bash_profile
+  - linux/.bashrc
+  - linux/.profile
+  - linux/.zprofile
+  - linux/.zshrc
   - general/.gitignore
   - general/.gitconfig
 dotfiles_home: "~"
