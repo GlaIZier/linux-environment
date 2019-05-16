@@ -5,7 +5,8 @@
     - default.config.yml
 
   pre_tasks:
-    - debug: msg="ansible_facts.pkg_mgr = {{ ansible_facts.pkg_mgr }}"
+# todo remove it
+#    - debug: msg="ansible_facts.pkg_mgr = {{ ansible_facts.pkg_mgr }}"
 
 # todo remove it
 #    - name: "Set ansible_pkg_mgr to homebrew when it's unknown"
@@ -25,6 +26,9 @@
     - include_tasks: tasks/dotfiles.yml
       when: configure_dotfiles
       tags: ['dotfiles']
+
+    - include_tasks: tasks/packages.yml
+      when
 
   roles:
     # https://github.com/Comcast/ansible-sdkman

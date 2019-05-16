@@ -25,32 +25,41 @@ dotfiles_files:
   - general/.gitconfig
 dotfiles_home: "~"
 
-
-#see the homebrew role https://github.com/geerlingguy/ansible-role-homebrew
-homebrew_installed_packages:
+# python should be installed manually since it is easy to break current python2 used on the system
+packages:
   - bash-completion
   - git
   - openssl
   - wget
-  - python
   - zsh
-  - fzf # is used by viasite-ansible/ansible-role-zsh. Without it, there will be a problem with this role: cannot unzip
+  - terminator
 
-homebrew_cask_appdir: /Applications
-homebrew_cask_apps:
-  - google-chrome
-  - google-backup-and-sync
-  - sublime-text
-  - skype
-  - iterm2
-  - intellij-idea
-  - keepassxc
-  - keka
-  - spectacle # windows management
-  - yujitach-menumeters # system info in status menu
-  - clipy # clipboard manager
-  - itsycal # calendar in status menu
-  - punto-switcher
+# Todo remove
+##see the homebrew role https://github.com/geerlingguy/ansible-role-homebrew
+#homebrew_installed_packages:
+#  - bash-completion
+#  - git
+#  - openssl
+#  - wget
+#  - python
+#  - zsh
+#  - fzf # is used by viasite-ansible/ansible-role-zsh. Without it, there will be a problem with this role: cannot unzip
+#
+#homebrew_cask_appdir: /Applications
+#homebrew_cask_apps:
+#  - google-chrome
+#  - google-backup-and-sync
+#  - sublime-text
+#  - skype
+#  - iterm2
+#  - intellij-idea
+#  - keepassxc
+#  - keka
+#  - spectacle # windows management
+#  - yujitach-menumeters # system info in status menu
+#  - clipy # clipboard manager
+#  - itsycal # calendar in status menu
+#  - punto-switcher
 #  - karabiner-elements # map keyboard keys including fn
 #  - docker
 #  - commander-one
