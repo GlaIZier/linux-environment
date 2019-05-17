@@ -1,8 +1,8 @@
 ---
-- name: Update if pkg_mgr = apt.
+- name: Update repositories if pkg_mgr = apt.
   apt:
     update_cache: yes
-  when:
+  when: ansible_facts['pkg_mgr'] == 'apt'
 
 - name: Install packages.
   package:
