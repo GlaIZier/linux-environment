@@ -2,12 +2,11 @@
 
 downloads: "~/.tmp/ansible-downloads/"
 
-configure_homebrew: yes
 configure_dotfiles: yes
+configure_packages: yes
 configure_sdkman: yes
 configure_zsh: yes
 configure_ssh: yes
-configure_mas: yes
 configure_extra_packages: yes
 configure_folders: yes
 
@@ -33,53 +32,6 @@ packages:
   - wget
   - zsh
   - terminator
-
-# Todo remove
-##see the homebrew role https://github.com/geerlingguy/ansible-role-homebrew
-#homebrew_installed_packages:
-#  - bash-completion
-#  - git
-#  - openssl
-#  - wget
-#  - python
-#  - zsh
-#  - fzf # is used by viasite-ansible/ansible-role-zsh. Without it, there will be a problem with this role: cannot unzip
-#
-#homebrew_cask_appdir: /Applications
-#homebrew_cask_apps:
-#  - google-chrome
-#  - google-backup-and-sync
-#  - sublime-text
-#  - skype
-#  - iterm2
-#  - intellij-idea
-#  - keepassxc
-#  - keka
-#  - spectacle # windows management
-#  - yujitach-menumeters # system info in status menu
-#  - clipy # clipboard manager
-#  - itsycal # calendar in status menu
-#  - punto-switcher
-#  - karabiner-elements # map keyboard keys including fn
-#  - docker
-#  - commander-one
-#  - alfred # spotlight replacement
-#  - insomnia # rest client
-#  - atom
-#  - brackets
-#  - microsoft-office
-#  - microsoft-teams
-#  - skype-for-business
-#  - nomachine
-#  - teamviewer
-#  - nimble-commander
-#  - double-commander
-
-
-# See the role https://github.com/geerlingguy/ansible-role-mas
-mas_installed_apps: []
-mas_email: ""
-mas_password: ""
 
 # see the sdkman role https://github.com/Comcast/ansible-sdkman
 sdkman_install_packages:

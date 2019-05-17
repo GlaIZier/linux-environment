@@ -28,7 +28,8 @@
       tags: ['dotfiles']
 
     - include_tasks: tasks/packages.yml
-      when
+      when: configure_packages
+      tags: ['packages']
 
   roles:
     # https://github.com/Comcast/ansible-sdkman

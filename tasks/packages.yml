@@ -1,0 +1,11 @@
+---
+- name: Update if pkg_mgr = apt.
+  apt:
+    update_cache: yes
+  when:
+
+- name: Install packages.
+  package:
+    name: "{{ item.name | default(item) }}"
+    state: "{{ item.state | default('present') }}"
+  with_items: "{{ packages }}"
