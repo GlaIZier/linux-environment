@@ -1,0 +1,80 @@
+---
+sudo: required
+dist: xenial
+
+install:
+  # Install Ansible
+  - sudo apt update
+  - sudo apt install software-properties-common
+  - sudo apt-add-repository --yes --update ppa:ansible/ansible
+  - sudo apt install ansible
+
+  # Add a hosts file.
+  - sudo mkdir -p /etc/ansible
+  - sudo touch /etc/ansible/hosts
+  - "echo -e '[local]\nlocalhost ansible_connection=local' | sudo tee -a /etc/ansible/hosts > /dev/null"
+
+script:
+
+  # Install dependencies.
+  - "ansible-galaxy install -r requirements.yml"
+
+  # Check the role/playbook's syntax.
+  - "ansible-playbook main.yml --syntax-check"
+
+  # Copy test config.yml to the root directory
+  - "cp test/config.yml config.yml"
+
+  # Test the playbook.
+  - "travis_wait 30 ansible-playbook main.yml -v"
+
+#  - "cat ~/.profile"
+
+  # Check configs (as links or files) exist
+#  - ([ -e ~/.zshrc ]) && { echo '.zshrc is in the home directory';} || { echo '.zshrc is not in the home directory'; exit 1;}
+#  - ([ -L ~/.zshrc.local ]) && { echo '.zshrc.local is in the home directory';} || { echo '.zshrc.local is not in the home directory'; exit 1;}
+
+  - ([ -r ~/.profile ]) && { echo '.profile is in the home directory';} || { echo '.profile is not in the home directory'; exit 1;}
+  - ([ -r ~/.bashrc ]) && { echo '.bashrc is in the home directory';} || { echo '.bashrc is not in the home directory'; exit 1;}
+  - ([ -r ~/.bash_profile ]) && { echo '.bash_profile is in the home directory';} || { echo '.bash_profile is not in the home directory'; exit 1;}
+  - ([ -r ~/.gitconfig ]) && { echo '.gitconfig is in the home directory';} || { echo '.gitconfig is not in the home directory'; exit 1;}
+  - ([ -r ~/.gitignore ]) && { echo '.gitignore is in the home directory';} || { echo '.gitignore is not in the home directory'; exit 1;}
+  - ([ -r ~/.zprofile ]) && { echo '.zprofile is in the home directory';} || { echo '.zprofile is not in the home directory'; exit 1;}
+  - ([ -r ~/.zshrc ]) && { echo '.zshrc is in the home directory';} || { echo '.zshrc is not in the home directory'; exit 1;}
+  - ([ -r ~/.zshrc.local ]) && { echo '.zshrc.local is in the home directory';} || { echo '.zshrc.local is not in the home directory'; exit 1;}
+
+  - ([ -d ~/app ]) && { echo 'app folder is in the home directory';} || { echo 'app folder is not in the home directory'; exit 1;}
+  - ([ -d ~/github ]) && { echo 'github folder is in the home directory';} || { echo 'github folder is not in the home directory'; exit 1;}
+  - ([ -d ~/tmp ]) && { echo 'tmp folder is in the home directory';} || { echo 'tmp folder is not in the home directory'; exit 1;}
+  - cat ~/.ssh/config
+  - "cat ~/.profile"
+  - "cat ~/.bash_profile"
+  - "cat ~/.bashrc"
+  - "cat ~/.zshrc"
+  - "cat ~/.zshrc.local"
+  - "cat ~/.zprofile"
+  - "cat ~/.gitconfig"
+  - "cat ~/.gitignore"
+
+#  - ([ -L ~/.profile ] && [ -L ~/.bashrc ] && [ -L ~/.bash_profile ] && [ -L ~/.gitconfig ] && [ -L ~/.gitignore ] && [ -L ~/.zprofile ] && [ -L ~/.zshrc ] && [ -L ~/.zshrc.local ]) && { echo 'Configs are in the home directory'; exit 0;} || { echo 'Configs are not in the home directory'; exit 1;}
+
+  # Test the playbook's idempotence.
+  - idempotence=$(mktemp)
+  - "ansible-playbook main.yml -v | tee -a ${idempotence}"
+#  - "cd ~/github/configs | git status"
+# 4 changes are: some configs updated by sdkman role and sdkman candidates
+  - >
+    tail ${idempotence}
+    | grep -q 'changed=4.*failed=0'
+    && (echo 'Idempotence test: pass' && exit 0)
+    || (echo 'Idempotence test: fail' && exit 1)
+
+  - "cat ~/.profile"
+  - "cat ~/.bash_profile"
+  - "cat ~/.bashrc"
+  - "cat ~/.zshrc"
+  - "cat ~/.zshrc.local"
+  - "cat ~/.zprofile"
+  - "cat ~/.gitconfig"
+  - "cat ~/.gitignore"
+
