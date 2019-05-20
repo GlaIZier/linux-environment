@@ -1,3 +1,6 @@
 # test config to diminish the time of tests by reducing the number of applications to install
 packages:
   - git
+  - openssl
+  - wget
+  - zsh
