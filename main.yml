@@ -1,5 +1,6 @@
 ---
 - hosts: localhost
+  become: yes
 
   vars_files:
     - default.config.yml
@@ -38,7 +39,6 @@
       tags: ['sdkman']
     # https://github.com/viasite-ansible/ansible-role-zsh
     - role: viasite-ansible.zsh
-      become: yes
       when: configure_zsh
       tags: ['zsh']
 
