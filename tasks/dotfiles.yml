@@ -1,6 +1,6 @@
 ---
 # Inspired by https://github.com/geerlingguy/ansible-role-dotfiles/blob/master/tasks/main.yml
-# Todo add a comment why a role cannot be used
+# geerlingguy's dotfiles role cannot be used because the structure of the dotfiles' repository is different
 - name: Ensure dotfiles repository is cloned locally.
   git:
     repo: "{{ dotfiles_repo }}"
