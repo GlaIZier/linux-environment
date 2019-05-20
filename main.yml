@@ -17,6 +17,9 @@
 
     - debug: msg="ansible_facts.pkg_mgr = {{ ansible_facts.pkg_mgr }}"
 
+    - include_tasks: tasks/ansible-check.yml
+      become: true
+
     # update the default.config.yml variables with ones from config.yml if it exists
     - include_vars: "{{ item }}"
       with_fileglob:
@@ -45,8 +48,6 @@
 
 
   tasks:
-
-    - include_tasks: tasks/ansible-check.yml
 
     - include_tasks: tasks/ssh.yml
       when: configure_ssh
