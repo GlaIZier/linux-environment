@@ -2,6 +2,7 @@
 - name: Update repositories if pkg_mgr = apt.
   apt:
     update_cache: yes
+  become: yes
   when: ansible_facts['pkg_mgr'] == 'apt'
 
 - name: Install packages.
