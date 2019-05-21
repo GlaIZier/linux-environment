@@ -13,4 +13,4 @@
   copy:
     src: "{{ dotfiles_repo_local_destination }}/macos/ssh/config"
     dest: ~/.ssh/config
-  when: configure_dotfiles
+  when: configure_dotfiles | bool

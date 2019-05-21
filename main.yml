@@ -17,7 +17,7 @@
       tags: ['always']
 
     - include_tasks: tasks/dotfiles.yml
-      when: configure_dotfiles == 'yes'
+      when: configure_dotfiles | bool
       tags: ['dotfiles']
 
     - include_tasks: tasks/packages.yml
@@ -27,12 +27,12 @@
   roles:
     # https://github.com/Comcast/ansible-sdkman
     - role: comcast.sdkman
-      when: configure_sdkman
+      when: configure_sdkman | bool
       tags: ['sdkman']
     # https://github.com/viasite-ansible/ansible-role-zsh
     - role: viasite-ansible.zsh
       become: yes
-      when: configure_zsh
+      when: configure_zsh | bool
       tags: ['zsh']
 
 
@@ -40,19 +40,19 @@
   tasks:
 
     - include_tasks: tasks/ssh.yml
-      when: configure_ssh
+      when: configure_ssh | bool
       tags: ['ssh']
 
     - include_tasks: tasks/zsh.yml
-      when: (configure_zsh and configure_dotfiles)
+      when: (configure_zsh and configure_dotfiles) | bool
       tags: ['zsh', 'dotfiles']
 
     - include_tasks: tasks/extra-packages.yml
-      when: configure_extra_packages
+      when: configure_extra_packages | bool
       tags: ['extra-packages']
 
     - include_tasks: tasks/folders.yml
-      when: configure_folders
+      when: configure_folders | bool
       tags: ['folders']
 
     - name: Run configured post-provision ansible task files.
