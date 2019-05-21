@@ -40,10 +40,10 @@ By using these strategies you can execute tasks one by one.
 2. Download [powerline](https://github.com/powerline/fonts) fonts \ 
    Choose fonts for powerline for iTerm2 (e.g. Droid Sans Mono for Powerline or another one): iTerm2-Preferences-Profiles-Text-Font \
    More info in Readme of the [oh-my-zsh role](https://github.com/viasite-ansible/ansible-role-zsh)
-3. Install color scheme for iTerm2 \
-iTerm2-Preferences-Profiles-Colors-Color Presets-Solarized Dark
-4. Install transparency and blur
-iTerm2-Preferences-Profiles-Window
+3. Install color scheme for the terminal \
+TBD
+4. Install transparency and blur for the terminal
+TBD
 
 ## Config
 You can override any of the defaults configured in `default.config.yml` by creating a `config.yml` file and setting the overrides in that file. For example, you can customize the installed packages and apps with something like:
@@ -65,6 +65,8 @@ This playbook has several inidempotent steps:
 1. .zshrc can be replaced by the dotfiles task and then by the .oh-my-zsh role if you run the whole playbook repeatedly. This is done to make this playbook work with with an arbitrary number of included tasks. 
 2. The sdkman role changes candidates every time (maybe because the version is not specified?)
 3. Sdkman role may fail to add SDKMAN_HOME in profiles when you run this playbook several times. If so, add it manually.
+4. Update repositories before installing packages
+5. Zsh role may make some changes
 
 ## More information
 More information can be found in readmes for every role

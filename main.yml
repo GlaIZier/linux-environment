@@ -5,15 +5,6 @@
     - default.config.yml
 
   pre_tasks:
-# todo remove it
-#    - debug: msg="ansible_facts.pkg_mgr = {{ ansible_facts.pkg_mgr }}"
-
-# todo remove it
-#    - name: "Set ansible_pkg_mgr to homebrew when it's unknown"
-#      set_fact:
-#        ansible_facts:
-#          pkg_mgr: homebrew
-#      when: ansible_facts['pkg_mgr'] == 'unknown'
 
     - debug: msg="ansible_facts.pkg_mgr = {{ ansible_facts.pkg_mgr }}"
 

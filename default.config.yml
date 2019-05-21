@@ -2,7 +2,7 @@
 
 downloads: "~/.tmp/ansible-downloads/"
 
-configure_dotfiles: yes
+configure_dotfiles: true
 configure_packages: yes
 configure_sdkman: yes
 configure_zsh: yes
