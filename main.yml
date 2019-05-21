@@ -17,7 +17,7 @@
       tags: ['always']
 
     - include_tasks: tasks/dotfiles.yml
-      when: configure_dotfiles
+      when: configure_dotfiles | yes
       tags: ['dotfiles']
 
     - include_tasks: tasks/packages.yml
