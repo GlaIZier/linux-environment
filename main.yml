@@ -17,11 +17,11 @@
       tags: ['always']
 
     - include_tasks: tasks/dotfiles.yml
-      when: {{ configure_dotfiles }}
+      when: "{{ configure_dotfiles }}"
       tags: ['dotfiles']
 
     - include_tasks: tasks/packages.yml
-      when: configure_packages
+      when: configure_packages | true
       tags: ['packages']
 
   roles:
