@@ -24,7 +24,7 @@ In order to install configs in the home directory, a repository with them is req
   1. [Install Ansible](http://docs.ansible.com/intro_installation.html).
   2. Clone this repository to your local drive.
   3. Run `$ ansible-galaxy install -r requirements.yml` inside this directory to install required Ansible roles.
-Note: If some Homebrew commands fail, you might need to agree to Xcode's license or fix some other Brew issue. Run brew doctor to see if this is the case.
+  4. Add proxy if required (See issues)
 
 ## Run
 ### Run all tasks

@@ -32,6 +32,9 @@ packages:
   - wget
   - zsh
   - terminator
+  - keepassx
+  - indicator-multiload
+  - copyq
 
 # see the sdkman role https://github.com/Comcast/ansible-sdkman
 sdkman_install_packages:
