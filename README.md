@@ -19,7 +19,7 @@ In order to install configs in the home directory, a repository with them is req
 1. This role is not fully idempotent. This forcefully re-installs dotfiles, configs and also sdkman packages if their vesions are not specified. 
 2. For Russia. If https://get.sdkman.io/ is unreachable, make sure you use proxy by, say, `export {http,https}_proxy="<server>"`. To unset `unset {http,https}_proxy` or reload the machine. 
 3. Sometimes even with proxy enabled sdkman does not want to download packages (progress bar is not showing at all and the error about curl or a missing package occurs. No idea why this happens. Maybe switching from offline and online mode could help. Or remove `rm -rf ~/.sdkman` and reinstall sdkman
-
+4. On Ubuntu 18.04.2, you need to install git manually beforehand
 ## Installation
   1. [Install Ansible](http://docs.ansible.com/intro_installation.html).
   2. Clone this repository to your local drive.
@@ -37,13 +37,11 @@ By using these strategies you can execute tasks one by one.
 
 ## Additional setup
 1. If you install sdkman, make sure that profiles contain SDKMAN_DIR. Especially if you tried to run the playbook several times
-2. Download [powerline](https://github.com/powerline/fonts) fonts \ 
-   Choose fonts for powerline for iTerm2 (e.g. Droid Sans Mono for Powerline or another one): iTerm2-Preferences-Profiles-Text-Font \
+2. Download and install [powerline](https://github.com/powerline/fonts) fonts \ 
+   Choose fonts for powerline (e.g. Droid Sans Mono for Powerline or another one): \
    More info in Readme of the [oh-my-zsh role](https://github.com/viasite-ansible/ansible-role-zsh)
-3. Install color scheme for the terminal \
-TBD
-4. Install transparency and blur for the terminal
-TBD
+3. Install color scheme for the terminal (e.g Solarized dark)
+4. Install transparency and blur for the terminal (e.g. 90%)
 
 ## Config
 You can override any of the defaults configured in `default.config.yml` by creating a `config.yml` file and setting the overrides in that file. For example, you can customize the installed packages and apps with something like:

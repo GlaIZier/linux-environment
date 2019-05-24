@@ -5,6 +5,7 @@
   become: yes
   when: ansible_facts['pkg_mgr'] == 'apt'
 
+# Todo add repositories and add additional packages to install: sublime,
 - name: Install packages.
   package:
     name: "{{ item.name | default(item) }}"

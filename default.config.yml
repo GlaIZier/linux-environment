@@ -33,8 +33,12 @@ packages:
   - zsh
   - terminator
   - keepassx
-  - indicator-multiload
   - copyq
+  - vim
+  - gnome-tweak-tool
+  - gnome-shell-extensions
+  - gnome-shell-extension-system-monitor
+  - chrome-gnome-shell
 
 # see the sdkman role https://github.com/Comcast/ansible-sdkman
 sdkman_install_packages:
