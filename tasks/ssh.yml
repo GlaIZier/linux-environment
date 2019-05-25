@@ -11,6 +11,6 @@
 
 - name: Ensure the ssh config is copied
   copy:
-    src: "{{ dotfiles_repo_local_destination }}/macos/ssh/config"
+    src: "{{ dotfiles_repo_local_destination }}/linux/ssh/config"
     dest: ~/.ssh/config
   when: configure_dotfiles | bool
