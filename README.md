@@ -1,4 +1,4 @@
-# Ansible MacOS environment initializer for developers
+# Ansible linux (tested on Ubuntu) environment initializer for developers
 [![Build Status](https://travis-ci.org/GlaIZier/linux-environment.svg?branch=master)](https://travis-ci.org/GlaIZier/macos-environment)
 
 ## What does it do
