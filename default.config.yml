@@ -6,6 +6,7 @@ configure_dotfiles: yes
 configure_packages: yes
 configure_sdkman: yes
 configure_zsh: yes
+configure_chrome: yes
 configure_ssh: yes
 configure_extra_packages: yes
 configure_folders: yes
