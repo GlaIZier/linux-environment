@@ -36,6 +36,7 @@
       tags: ['zsh']
     # https://github.com/cmprescott/ansible-role-chrome
     - role: cmprescott.chrome
+      become: yes
       when: configure_chrome | bool
       tags: ['chrome']
 

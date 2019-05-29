@@ -1,5 +1,5 @@
 # Ansible linux (tested on Ubuntu) environment initializer for developers
-[![Build Status](https://travis-ci.org/GlaIZier/linux-environment.svg?branch=master)](https://travis-ci.org/GlaIZier/macos-environment)
+[![Build Status](https://travis-ci.org/GlaIZier/linux-environment.svg?branch=master)](https://travis-ci.org/GlaIZier/linux-environment)
 
 ## What does it do
 1. adds configs (dotfiles like .bashrc) from a github repository to your home directory '~'
