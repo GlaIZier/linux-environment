@@ -45,8 +45,8 @@
   tasks:
 
     - include_tasks: tasks/snap-packages.yml
-        when: configure_snap_packages | bool
-        tags: ['snap-packages']
+      when: configure_snap_packages | bool
+      tags: ['snap-packages']
 
     - include_tasks: tasks/ssh.yml
       when: configure_ssh | bool
