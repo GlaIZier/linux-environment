@@ -6,6 +6,7 @@
 2. installs packages
 3. installs sdkman and sdk applications ([sdkman role](https://github.com/Comcast/ansible-sdkman))
 4. installs zsh, oh-my-zsh and configures it ([oh-my-zsh role](https://github.com/viasite-ansible/ansible-role-zsh))
+5. installs chrome (disabled by default since chromium is preferable and installed with other packages)
 5. creates a pair of ssh keys
 6. installs additional npm, python, ruby and php packages
 7. creates folders in the home directory

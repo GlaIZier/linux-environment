@@ -6,7 +6,7 @@ configure_dotfiles: yes
 configure_packages: yes
 configure_sdkman: yes
 configure_zsh: yes
-configure_chrome: yes
+configure_chrome: no
 configure_ssh: yes
 configure_extra_packages: yes
 configure_folders: yes
@@ -33,22 +33,32 @@ packages:
   - wget
   - zsh
   - terminator
+  - chromium-browser
   - keepassx
   - copyq
   - vim
   - gnome-tweak-tool
-  - gnome-shell-extensions
+  - gnome-shell-extensions # Put windows - spectacle
   - gnome-shell-extension-system-monitor
   - chrome-gnome-shell
+  - snapd
+
+snap_packages:
+  - {name: skype, classic: yes}
+  - {name: sublime-text, classic: yes}
+  - {name: plexmediaserver, classic: no}
+#  - {name: intellij-idea-ultimate, classic: yes} # commented by default because i don't want idea to be updated automatically as snap does
+
+  # download idea
 
 # see the sdkman role https://github.com/Comcast/ansible-sdkman
 sdkman_install_packages:
-#        - { candidate: java, version: '' }
-        - { candidate: java, version: '8.0.212-amzn' }
-        - { candidate: java, version: '11.0.3.hs-adpt' }
-#        - { candidate: java, version: '11.0.2-open' }
-        - { candidate: gradle, version: '' }
-        - { candidate: maven, version: '' }
+#  - { candidate: java, version: '' }
+  - { candidate: java, version: '8.0.212-amzn' }
+  - { candidate: java, version: '11.0.3.hs-adpt' }
+#  - { candidate: java, version: '11.0.2-open' }
+  - { candidate: gradle, version: '' }
+  - { candidate: maven, version: '' }
 
 # Install packages from other package managers.
 # Note: You are responsible for making sure the required package managers are
