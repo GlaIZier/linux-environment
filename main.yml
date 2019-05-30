@@ -21,7 +21,6 @@
       tags: ['dotfiles']
 
     - include_tasks: tasks/packages.yml
-      become: yes
       when: configure_packages | bool
       tags: ['packages']
 
@@ -46,7 +45,6 @@
   tasks:
 
     - include_tasks: tasks/snap-packages.yml
-      become: yes
       when: configure_snap_packages | bool
       tags: ['snap-packages']
 
