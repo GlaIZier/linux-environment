@@ -2,6 +2,6 @@
 - name: Install snap packages.
   snap:
     name: "{{ item.name | default(item) }}"
-    classic: "{{ item.name | default('yes'}}"
+    classic: "{{ item.name | default('yes') }}"
     state: "{{ item.state | default('present') }}"
   with_items: "{{ snap_packages }}"
