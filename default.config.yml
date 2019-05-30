@@ -45,9 +45,9 @@ packages:
   - snapd
 
 snap_packages:
-  - {name: 'skype', classic: 'yes'}
-  - {name: 'sublime-text', classic: 'yes'}
-  - {name: 'plexmediaserver', classic: 'no'}
+  - { name: skype, classic: yes }
+  - { name: sublime-text, classic: yes }
+  - { name: plexmediaserver, classic: no }
 #  - {name: intellij-idea-ultimate, classic: yes} # commented by default because i don't want idea to be updated automatically as snap does
 
   # download idea

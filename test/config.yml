@@ -1,6 +1,10 @@
 # test config to diminish the time of tests by reducing the number of applications to install
+configure_chrome: yes
+
 packages:
   - git
   - openssl
   - wget
   - zsh
+  - snapd
+  - chromium-browser
