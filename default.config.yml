@@ -64,7 +64,7 @@ snap_packages:
 
 intellij_edition: ultimate
 intellij_install_dir: /opt/idea-{{ intellij_edition }}-{{ intellij_version }}
-intellij_download_dir: /tmp
+intellij_download_dir: ~/tmp
 
 
 # Install packages from other package managers.
