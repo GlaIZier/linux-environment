@@ -27,6 +27,7 @@
   roles:
     # https://github.com/Comcast/ansible-sdkman
     - role: comcast.sdkman
+      become: yes
       when: configure_sdkman | bool
       tags: ['sdkman']
     # https://github.com/viasite-ansible/ansible-role-zsh
