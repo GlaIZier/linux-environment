@@ -2,3 +2,4 @@
 - name: comcast.sdkman
 - name: viasite-ansible.zsh
 - name: cmprescott.chrome
+- name: gantsign.intellij

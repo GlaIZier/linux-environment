@@ -15,6 +15,7 @@
 [sdkman role](https://github.com/Comcast/ansible-sdkman)\
 [oh-my-zsh role](https://github.com/viasite-ansible/ansible-role-zsh) \
 [cmprescott.chrome](https://github.com/cmprescott/ansible-role-chrome) \
+[gantsign.intellij](https://github.com/gantsign/ansible-role-intellij) \
 In order to install configs in the home directory, a repository with them is required. My [repository](https://github.com/GlaIZier/configs) is used by default
 
 ## Issues 

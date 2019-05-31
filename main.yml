@@ -39,6 +39,11 @@
       become: yes
       when: configure_chrome | bool
       tags: ['chrome']
+    # https://github.com/gantsign/ansible-role-intellij
+    - role: gantsign.intellij
+      become: yes
+      when: configure_idea | bool
+      tags: ['idea']
 
 
 
