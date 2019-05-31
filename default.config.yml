@@ -1,6 +1,6 @@
 ---
 
-downloads: "/tmp/ansible-downloads/"
+downloads: '/tmp/ansible-downloads/'
 
 configure_dotfiles: yes
 configure_packages: yes
@@ -64,7 +64,7 @@ snap_packages:
 
 intellij_edition: ultimate
 intellij_install_dir: /opt/idea-{{ intellij_edition }}-{{ intellij_version }}
-intellij_download_dir: {{ downloads }}/idea
+intellij_download_dir: '{{ downloads }}/idea'
 
 
 # Install packages from other package managers.
