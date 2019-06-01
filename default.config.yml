@@ -1,6 +1,6 @@
 ---
 
-downloads: '/tmp/ansible-downloads/'
+downloads: '/tmp/ansible-downloads'
 
 configure_dotfiles: yes
 configure_packages: yes
